@@ -27,7 +27,6 @@ jobs:
 #      - store_artifacts:
 #          path: C:\Users\circleci\project\test_coverage
   build:
-    type: approval
     description: Build application with Release configuration
     executor:
       name: windows/default
@@ -42,5 +41,6 @@ workflows:
     jobs:
       - test
       - build:
+          type: approval
           requires:
             - test
