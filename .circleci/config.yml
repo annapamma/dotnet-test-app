@@ -15,17 +15,16 @@ jobs:
             - dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}
       - run:
           name: "Install project dependencies"
-#          command: dotnet.exe restore
-          command: echo "test"
-#      - save_cache:
-#          paths:
-#            - C:\Users\circleci\.nuget\packages
-#          key: dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}
-#      - run:
-#          name: "Run Application Tests"
-#          command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
-#      - store_artifacts:
-#          path: C:\Users\circleci\project\test_coverage
+          command: dotnet.exe restore
+      - save_cache:
+          paths:
+            - C:\Users\circleci\.nuget\packages
+          key: dotnet-packages-v1-{{ checksum "SimpleCalc/SimpleCalc.csproj" }}
+      - run:
+          name: "Run Application Tests"
+          command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
+      - store_artifacts:
+          path: C:\Users\circleci\project\test_coverage
   build:
     description: Build application with Release configuration
     executor:
