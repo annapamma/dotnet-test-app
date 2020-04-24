@@ -39,7 +39,10 @@ workflows:
   build-and-test:
     jobs:
       - test
-      - build:
+      - hold:
           type: approval
           requires:
             - test
+      - build:
+          requires:
+            - hold
